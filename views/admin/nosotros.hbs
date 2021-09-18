@@ -3,9 +3,54 @@
         <div class="col">
             <p class="text-right">
                 <span>Hola {{usuario}}!</span>
-                <a href="/admin/login/logout" class="btn btn-danger">Cerrar sesion </a>
+                <a href="/admin/login/logout" class="btn btn-danger">Cerrar sesion</a>
             </p>
 
         </div>
     </div>
+
+    <div class="row">
+        <div class="col-7" style="margin-top: -9px;">
+            <h2>Nosotros</h2>
+        </div>
+        <div class="col-5 text-right">
+            <a herf="" class= "btn btn-success"><i class="fas fa-plus>"></i> Nuevo</a>
+        </div>
+    </div>
+    <div class="row"></div>
+    <div class="col"></div>
+    <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Nombre</th>
+      <th scope="col">Area</th>
+      <th scope="col">Funcion</th>
+    </tr>
+  </thead>
+  <tbody>
+      {{#each nosotros}}
+    <tr>
+      <th scope="row">{{id}}</th>
+      <td>{{nombre}}</td>
+      <td>Responsable de la firma</td>
+      <td>Gestiones legales</td>
+    </tr>
+    <tr>
+      <th scope="row">2</th>
+      <td>Ana</td>
+      <td>Diseño</td>
+      <td>Armado de planos</td>
+    </tr>
+     <tr>
+      <th scope="row">3</th>
+      <td>Ariel</td>
+      <td>Dirección de obra</td>
+      <td>Supervición de construcción</td>
+    </tr>
+    {{/each}}
+  </tbody>
+</table>
+</div>
+</div>
 </div>

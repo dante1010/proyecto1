@@ -1,11 +1,14 @@
 var express = require('express');
 var router = express.Router();
+var nosotrosModel = require('../../models/nosotrosModel');
 
+router.get('/', async function (req, res, next) {
+    var nosotros= await nosotrosModel.getNosotros();
 
-router.get('/', function (req, res, next) {
     res.render('admin/nosotros', {
         layout: 'admin/layout',
-        usuario: req.session.nombre
+        usuario: req.session.nombre,
+        nosotros
     });
 }); // cierra get
 
