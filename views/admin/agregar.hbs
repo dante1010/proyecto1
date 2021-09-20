@@ -1,0 +1,22 @@
+<div class="container" style= "margin:100px auto">
+    <div class="row">
+        <div class="col-6 offset-3">
+            <h4>Agregar un nuevo Proyecto</h4>
+            <form action="/admin/nosotros/agregar" method="post">
+            <div class="form-group">
+                <input type="text" class="form-control" placeholder="proyecto" name="proyecto">
+            </div>
+            <div class="form-group">
+                <textarea type="text" class="form-control" placeholder="descripción" name="descripción"></textarea>
+            </div>
+            <div class="form-group">
+                <textarea type="text" class="form control" placeholder="responsable" name="responsable"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Guardar</button>
+            </form>
+            {{#if error}}
+               {{message}}
+               {{/if}}
+        </div>
+    </div>
+</div>
