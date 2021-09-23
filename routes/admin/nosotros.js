@@ -27,7 +27,7 @@ router.get('/agregar', (req, res, next) => {
 
 router.post('/agregar', async (req, res, next) => {
     try {
-        if (req.body.proyecto != "" && req.body.descripción != "" && req.body.responsable != "") {
+        if (req.body.proyecto != "" && req.body.descripcion != "" && req.body.responsable != "") {
             await nosotrosModel.insertProyecto(req.body);
             res.redirect('/admin/nosotros')
         } else {
