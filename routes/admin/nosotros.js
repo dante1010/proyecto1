@@ -1,6 +1,11 @@
 var express = require('express');
 var router = express.Router();
 var nosotrosModel = require('../../models/nosotrosModel');
+var util = require('util');
+var cloudinary = require('cloudinary').v2;
+const uploader = util.promisify(cloudinary.uploader.upload);
+
+
 
 router.get('/', async function (req, res, next) {
     var nosotros = await nosotrosModel.getNosotros();
@@ -27,8 +32,22 @@ router.get('/agregar', (req, res, next) => {
 
 router.post('/agregar', async (req, res, next) => {
     try {
+
+        var img_id = '';
+        if (req.files && Object.keys(req.files).length > 0) {
+            imagen = req.files.imagen;
+            img_id = (await uploader(imagen.tempFilePath)).public_id;
+        }
+
         if (req.body.proyecto != "" && req.body.descripcion != "" && req.body.responsable != "") {
-            await nosotrosModel.insertNosotros(req.body);
+            // await nosotrosModel.insertNosotros(req.body); 
+            await nosotrosModel.insertNosotros({
+                ...req.body,
+                img_id
+            });
+
+
+
             res.redirect('/admin/nosotros')
         } else {
             res.render('admin/agregar', {
@@ -79,4 +98,4 @@ router.post('/modificar', async (req, res, next) => {
 });
 
 
-    module.exports = router;
+module.exports = router;

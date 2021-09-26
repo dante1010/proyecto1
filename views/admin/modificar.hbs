@@ -2,7 +2,7 @@
     <div class="row">
         <div class="col-6 offset-3">
             <h4>Modificar el proyecto</h4>
-            <form action="/admin/nosotros/modificar" method="post">
+            <form action="/admin/nosotros/modificar" method="post" enctype="multipart/form-data" >
                 <input type="hidden" value="{{nosotros.id}}" name="id">
                 <div class="form-group">
                     <label for="">Proyecto</label>
