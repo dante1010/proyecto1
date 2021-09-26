@@ -1,0 +1,27 @@
+<div class="container" style="margin:100px 0">
+    <div class="row">
+        <div class="col-6 offset-3">
+            <h4>Modificar el proyecto</h4>
+            <form action="/admin/nosotros/modificar" method="post">
+                <input type="hidden" value="{{nosotros.id}}" name="id">
+                <div class="form-group">
+                    <label for="">Proyecto</label>
+                    <input type="text" class="form-control" name="titulo" value="{{nosotros.proyecto}}">
+                </div>
+                <div class="form-group">
+                    <label for="">Descripcion</label>
+                    <textarea name="descripcion" class="form-control">{{nosotros.descripcion}}</textarea>
+                </div>
+                <div class="form-group">
+                    <label for="">Responsable</label>
+                    <input type="text" class="form-control" name="responsable" value="{{nosotros.responsable}}">
+                </div>
+                <button type="submit" class="btn btn-primary">Modificar</button>
+            </form>
+            {{#if error}}
+                   {{message}}
+            {{/if}}
+            
+        </div>
+    </div>
+</div>

@@ -48,4 +48,35 @@ router.post('/agregar', async (req, res, next) => {
 });
 
 
+router.get('/modificar/:id', async (req, res, next) => {
+    var id = req.params.id;
+    var nosotros = await nosotrosModel.getNosotrosById(id);
+    res.render('admin/modificar', {
+        layout: 'admin/layout',
+        nosotros
+    });
+});
+
+router.post('/modificar', async (req, res, next) => {
+    try {
+        var obj = {
+            proyecto: req.body.proyecto,
+            descripcion: req.body.descripcion,
+            responsable: req.body.responsable
+        }
+
+        console.log(obj)
+        await nosotrosModel.modificarNosotrosById(obj, req.body.id);
+        res.redirect('/admin/nosotros');
+    } catch (error) {
+        console.log(error)
+        res.render('admin/nosotros', {
+            layout: 'admin/layout',
+            error: true,
+            message: 'No se modifico el proyecyo'
+        })
+    }
+});
+
+
     module.exports = router;
