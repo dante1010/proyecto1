@@ -58,39 +58,19 @@
     </div>
     <!-- FIN CARRUSEL -->
 
-    <!-- INICIO CARD -->
+  <!-- INICIO CARD -->
     <div id="proyectos"></div>
     <div class="container">
         <div class="card-deck">
+            {{#each nosotros}}
             <div class="card">
                 <img src="images/foto3.jpg" class="card-img-top" alt="proyecto1">
                 <div class="card-body">
-                    <h5 class="card-title">Proyecyo 1</h5>
-                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
-                        additional
-                        content. This content is a little bit longer.</p>
+                    <h5 class="card-title">{{proyecto}}</h5>
+                    <p class="card-text">{{descripcion}}</p>
                 </div>
-               
             </div>
-            <div class="card">
-                <img src="images/foto4.jpg" class="card-img-top" alt="proyecto2">
-                <div class="card-body">
-                    <h5 class="card-title">Proyecto 2</h5>
-                    <p class="card-text">This card has supporting text below as a natural lead-in to additional content.
-                    </p>
-                </div>
-               
-            </div>
-            <div class="card">
-                <img src="images/foto5.jpg" class="card-img-top" alt="proyecto3">
-                <div class="card-body">
-                    <h5 class="card-title">Proyecto 3</h5>
-                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
-                        additional
-                        content. This card has even longer content than the first to show that equal height action.</p>
-                </div>
-               
-            </div>
+          {{/each}}
         </div>
     </div>
     <!-- FIN CARD -->

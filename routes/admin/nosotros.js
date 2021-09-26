@@ -13,7 +13,7 @@ router.get('/', async function (req, res, next) {
 }); // cierra get
 
 
-router.get('eliminar/id', async (req, res, next) => {
+router.get('/eliminar/:id', async (req, res, next) => {
     var id = req.params.id;
     await nosotrosModel.deleteNosotrosById(id);
     res.redirect('/admin/nosotros')
