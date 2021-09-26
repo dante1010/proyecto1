@@ -13,9 +13,9 @@ async function deleteNosotrosById(id) {
     return rows;
 }
 
-async function insertProyecto(obj) {
+async function insertNosotros(obj) {
     try {
-        var query = "insert into proyectos set ?";
+        var query = "insert into nosotros set ?";
         var rows = await pool.query(query, [obj]);
         return rows;
     } catch (error) {
@@ -25,4 +25,4 @@ async function insertProyecto(obj) {
 }
 
 
-module.exports = { getNosotros, deleteNosotrosById, insertProyecto }
+module.exports = { getNosotros, deleteNosotrosById, insertNosotros }

@@ -16,7 +16,7 @@ router.get('/', async function (req, res, next) {
 router.get('eliminar/id', async (req, res, next) => {
     var id = req.params.id;
     await nosotrosModel.deleteNosotrosById(id);
-    res.redirect('/admin/novedades')
+    res.redirect('/admin/nosotros')
 });
 
 router.get('/agregar', (req, res, next) => {
@@ -28,7 +28,7 @@ router.get('/agregar', (req, res, next) => {
 router.post('/agregar', async (req, res, next) => {
     try {
         if (req.body.proyecto != "" && req.body.descripcion != "" && req.body.responsable != "") {
-            await nosotrosModel.insertProyecto(req.body);
+            await nosotrosModel.insertNosotros(req.body);
             res.redirect('/admin/nosotros')
         } else {
             res.render('admin/agregar', {
