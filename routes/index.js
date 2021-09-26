@@ -22,13 +22,14 @@ router.get('/', async function (req, res, next) {
       }
     } else {
       return {
+        ...nosotros,
         imagen: '/images/noimage.jpg'
       }
     }
   });
 
 
-  
+
   res.render('index', {
   nosotros
 });
