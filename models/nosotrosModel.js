@@ -42,5 +42,11 @@ async function modificarNosotrosById(obj, id) {
     }
 }
 
+async function buscarNosotros(busqueda) {
+    var query = "select * from nosotros where proyecto like ? OR descripcion like ? OR responsable like ?";
+    var rows = await pool.query(query, ['%' + busqueda + '%' , '%' + busqueda + '%', '%' + busqueda + '%']);
+    return rows;
+}
 
-module.exports = { getNosotros, deleteNosotrosById, insertNosotros, getNosotrosById, modificarNosotrosById }
+
+module.exports = { getNosotros, deleteNosotrosById, insertNosotros, getNosotrosById, modificarNosotrosById, buscarNosotros }

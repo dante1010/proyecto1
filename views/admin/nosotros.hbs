@@ -13,8 +13,15 @@
     <div class="col-7" style="margin-top: -9px;">
       <h2>Proyectos</h2>
     </div>
-    <div class="col-5 text-right">
+    <div class="col-2 text-right">
       <a href="/admin/nosotros/agregar" class="btn btn-success"> Nuevo</a>
+    </div>
+    <div class="col-3 text-right">
+      <form class="form-inline" action="/admin/nosotros" method="get">
+        <input class="form-control" type="search" placeholder="Buscar" aria-label="Search" name="q" {{#if q}}
+          value="{{q}}" {{/if}}>
+        <button class="btn btn-secondary my-2 my-sm-0" type="submit"><i class="fa fa-search"></i></button>
+      </form>
     </div>
   </div>
   <div class="row"></div>
@@ -35,7 +42,7 @@
         <td>{{proyecto}}</td>
         <td>{{descripcion}}</td>
         <td>{{responsable}}</td>
-        <td class= "text-right">
+        <td class="text-right">
           <a href="/admin/nosotros/modificar/{{id}}" class="btn btn-secondary">Modificar</a>
           <a href="/admin/nosotros/eliminar/{{id}}" class="btn btn-secondary">Eliminar</a>
         </td>
@@ -46,6 +53,11 @@
 
     </tbody>
   </table>
+  {{#if is_search}}
+  {{#unless nosotros.length}}
+  No se encontraron resultados para "<b>{{q}}</b>"
+  {{/unless}}
+  {{/if}}
 
 </div>
 </div>

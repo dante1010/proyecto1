@@ -9,7 +9,14 @@ const destroy = util.promisify(cloudinary.uploader.destroy);
 
 
 router.get('/', async function (req, res, next) {
-    var nosotros = await nosotrosModel.getNosotros();
+    //var nosotros = await nosotrosModel.getNosotros();
+
+    var nosotros
+    if (req.query.q === undefined) {
+        nosotros = await nosotrosModel.getNosotros();
+    } else {
+        nosotros = await nosotrosModel.buscarNosotros(req.query.q);
+    }
 
 
   nosotros = nosotros.map(nosotros => {
@@ -34,7 +41,9 @@ router.get('/', async function (req, res, next) {
     res.render('admin/nosotros', {
         layout: 'admin/layout',
         usuario: req.session.nombre,
-        nosotros
+        nosotros,
+        is_search: req.query.q !== undefined,
+        q: req.query.q
     });
 }); // cierra get
 
