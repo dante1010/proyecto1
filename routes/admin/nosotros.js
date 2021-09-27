@@ -11,6 +11,26 @@ const destroy = util.promisify(cloudinary.uploader.destroy);
 router.get('/', async function (req, res, next) {
     var nosotros = await nosotrosModel.getNosotros();
 
+
+  nosotros = nosotros.map(nosotros => {
+    if (nosotros.img_id) {
+      const imagen = cloudinary.url(nosotros.img_id, {
+        width: 50,
+        height: 50,
+        crop: 'fill'
+      });
+      return {
+        ...nosotros,
+        imagen
+      }
+    } else {
+      return {
+        ...nosotros,
+        imagen: ' '
+      }
+    }
+  });
+
     res.render('admin/nosotros', {
         layout: 'admin/layout',
         usuario: req.session.nombre,
@@ -21,6 +41,11 @@ router.get('/', async function (req, res, next) {
 
 router.get('/eliminar/:id', async (req, res, next) => {
     var id = req.params.id;
+    let nosotros = await nosotrosModel.getNosotrosById(id);
+    if (nosotros.img_id) {
+        await (destroy(nosotros.img_id));
+    }
+    
     await nosotrosModel.deleteNosotrosById(id);
     res.redirect('/admin/nosotros')
 });
